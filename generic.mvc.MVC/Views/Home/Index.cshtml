@@ -1,0 +1,16 @@
+﻿@model IEnumerable<generic.mvc.domain.Entities.User>
+
+@{
+    ViewData["Title"] = "Pagina Inicial";
+}
+
+<div class="container">
+    @foreach(var item in Model)
+    {
+        <h1 style="margin-top: 75px;">@item.Name</h1>
+        <h1>@item.BirthDay</h1>
+    }
+</div>
+
+
+

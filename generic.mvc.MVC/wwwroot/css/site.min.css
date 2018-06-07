@@ -1,0 +1,68 @@
+body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;padding-right:15px}.carousel-caption p{font-size:20px;line-height:1.4}.carousel-inner .item img[src$=".svg"]{width:100%}#qrCode{margin:15px}@media screen and (max-width:767px){.carousel-caption{display:none}}
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    font-size: 18px !important;
+}
+
+#cancelarDadosPesssoais, #cancelarEndereco {
+    display: none;
+}
+
+form-control:focus {
+    border: 10px solid #259521;
+}
+
+input:disabled, button:disabled, select:disabled {
+    cursor: not-allowed;
+} 
+
+#buscarCEP {
+    padding-top: 31px; 
+}
+
+#buscarCEP a {
+    height: 31px;
+    padding: 0px;
+    line-height: 26px;
+}
+
+.container-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    display: none;
+}
+
+.loading {
+    border: 6px solid #ccc;
+    width: 60px;
+    height: 60px; 
+    border-radius: 125%;
+     border-top-color: #FF473B;
+    border-left-color: #FF473B; 
+    animation: spin 1s infinite ease-in-out; 
+}
+
+.alert {
+    display: none;
+}
+
+.visivel {
+    display: block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        
+    }
+    100% {
+        transform: rotate(1080deg);
+    }
+}
