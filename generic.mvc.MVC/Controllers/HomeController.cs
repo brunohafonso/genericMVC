@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using generic.mvc.domain.contracts;
@@ -17,20 +18,22 @@ namespace generic.mvc.MVC.Controllers
 
         public static async Task crawler()
         {
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.Credentials = new NetworkCredential();
             var listaTitulos = new List<Potro>();
-            var url = "https://natyr.github.io/";
+            var url = "http://www.pontoslivelo.com.br/compreepontue/camicado";
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
             var divs = htmlDocument.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "").Equals("about_title")).ToList();
+                .Where(node => node.GetAttributeValue("class", "").Equals("points-info-rectangle")).ToList();
 
             foreach(var div in divs)
             {
                 var potro = new Potro();
-                potro.Titulo1 = div.Descendants("h2").FirstOrDefault().InnerText;
-                potro.Titulo2 = div.Descendants("h2").FirstOrDefault().InnerText;
+                potro.Titulo1 = div.Descendants("div").LastOrDefault(node => node.GetAttributeValue("class", "").Equals("pontos-1")).InnerText;
+                potro.Titulo2 = div.Descendants("div").LastOrDefault(node => node.GetAttributeValue("class", "").Equals("pontos-1")).InnerText;
                 listaTitulos.Add(potro);
             }
 
